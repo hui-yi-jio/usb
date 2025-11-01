@@ -24,29 +24,19 @@ module usb_desc (
 	output desc_have_strings_i
 );
 
-    localparam [7:0]descrom[0:294] = {
-	8'h12,8'h01,8'h00,8'h02,8'h02,8'h00,8'h00,8'h40,8'h88,8'h88,8'h77,8'h77,8'h00,8'h02,8'h01,8'h02,8'h03,8'h01,//Device Descriptor
+    localparam [7:0]descrom[0:232] = {
+	8'h12,8'h01,8'h10,8'h01,8'h02,8'h00,8'h00,8'h40,8'h88,8'h12,8'h12,8'h77,8'h00,8'h02,8'h01,8'h02,8'h00,8'h01,//Device Descriptor
 	8'h0a,8'h06,8'h00,8'h02,8'h02,8'h00,8'h00,8'h40,8'h01,8'h00,//Device Qualifier
-	8'h09,8'h02,8'h43,8'h00,8'h02,8'h01,8'h00,8'h80,8'h32,//Full Speed Configuration
-	8'h08,8'h0B,8'h00,8'h02,8'h02,8'h02,8'h01,8'h00,
-	8'h09,8'h04,8'h00,8'h00,8'h01,8'h02,8'h02,8'h01,8'h00,
-	8'h05,8'h24,8'h00,8'h10,8'h01,
-	8'h04,8'h24,8'h02,8'h02,
-	8'h05,8'h24,8'h06,8'h00,8'h01,
-	8'h07,8'h05,8'h81,8'h03,8'h08,8'h00,8'hFF,
-	8'h09,8'h04,8'h01,8'h00,8'h02,8'h0A,8'h00,8'h00,8'h00,
+	8'h09,8'h02,8'h27,8'h00,8'h02,8'h01,8'h00,8'hc0,8'hfa,//Full Speed Configuration
+	8'h09,8'h04,8'h00,8'h00,8'h03,8'h02,8'h00,8'h02,8'h00,//INFDES
 	8'h07,8'h05,8'h82,8'h02,8'h40,8'h00,8'h00,
 	8'h07,8'h05,8'h02,8'h02,8'h40,8'h00,8'h00,
-	8'h09,8'h02,8'h43,8'h00,8'h02,8'h01,8'h00,8'h80,8'h32,//High Speed Configuration
-	8'h08,8'h0B,8'h00,8'h02,8'h02,8'h02,8'h01,8'h00,
-	8'h09,8'h04,8'h00,8'h00,8'h01,8'h02,8'h02,8'h01,8'h00,
-	8'h05,8'h24,8'h00,8'h10,8'h01,
-	8'h04,8'h24,8'h02,8'h02,
-	8'h05,8'h24,8'h06,8'h00,8'h01,
-	8'h07,8'h05,8'h81,8'h03,8'h08,8'h00,8'hFF,
-	8'h09,8'h04,8'h01,8'h00,8'h02,8'h0A,8'h00,8'h00,8'h00,
+	8'h07,8'h05,8'h81,8'h03,8'h08,8'h00,8'h01,
+	8'h09,8'h02,8'h27,8'h00,8'h02,8'h01,8'h00,8'hc0,8'hfa,//High Speed Configuration
+	8'h09,8'h04,8'h00,8'h00,8'h03,8'h02,8'h00,8'h02,8'h00,//INFDES
 	8'h07,8'h05,8'h82,8'h02,8'h00,8'h02,8'h00,
 	8'h07,8'h05,8'h02,8'h02,8'h00,8'h02,8'h00,
+	8'h07,8'h05,8'h81,8'h03,8'h08,8'h00,8'h01,
 	8'h09,8'h21,8'h11,8'h01,8'h00,8'h01,8'h22,8'h34,8'h00,//HID
 	8'h05,8'h0F,8'h16,8'h00,8'h02,
 	8'h07,8'h10,8'h02,8'h02,8'h00,8'h00,8'h00,
@@ -62,20 +52,20 @@ module usb_desc (
     assign  desc_qual_addr_i       = 18;
     assign  desc_qual_len_i        = 10;
     assign  desc_fscfg_addr_i      = 28;
-    assign  desc_fscfg_len_i       = 70;
-    assign  desc_hscfg_addr_i      = 98;
-    assign  desc_hscfg_len_i       = 70;
+    assign  desc_fscfg_len_i       = 39;
+    assign  desc_hscfg_addr_i      = 67;
+    assign  desc_hscfg_len_i       = 39;
     assign  desc_oscfg_addr_i      = 28;
-    assign  desc_hidrpt_addr_i     = 168;
-    assign  desc_hidrpt_len_i      = 21;
-    assign  desc_bos_addr_i        = 189;
-    assign  desc_bos_len_i         = 24;
-    assign  desc_strlang_addr_i    = 213;
-    assign  desc_strvendor_addr_i  = 217;
+    assign  desc_hidrpt_addr_i     = 0;//106;
+    assign  desc_hidrpt_len_i      = 0;//21;
+    assign  desc_bos_addr_i        = 0;//127;
+    assign  desc_bos_len_i         = 0;//24;
+    assign  desc_strlang_addr_i    = 151;
+    assign  desc_strvendor_addr_i  = 155;
     assign  desc_strvendor_len_i   = 12;
-    assign  desc_strproduct_addr_  = 229;
+    assign  desc_strproduct_addr_  = 167;
     assign  desc_strproduct_len_i  = 38;
-    assign  desc_strserial_addr_i  = 267;
+    assign  desc_strserial_addr_i  = 205;
     assign  desc_strserial_len_i   = 28;
     assign  desc_have_strings_i    = 1;
     assign  descrom_rdata_i        = descrom[descrom_raddr_o];
